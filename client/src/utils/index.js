@@ -2,7 +2,8 @@ import axios from "axios";
 
 import { SetPosts } from "../features/post/postSlice.js";
 
-const API_URL = "http://localhost:8800";
+// const API_URL = "http://localhost:8800";
+const API_URL = "https://seriouz-infinit-share.onrender.com";
 
 const API = axios.create({
   baseURL: API_URL,
