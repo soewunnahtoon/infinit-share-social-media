@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema(
       minlength: [6, "Password should be more than 6 characters."],
       select: true,
     },
-    profileUrl: {
+    profileImage: {
       type: String,
       default:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png",

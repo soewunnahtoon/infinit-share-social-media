@@ -50,7 +50,7 @@ const getPosts = async (req, res) => {
     const posts = await Post.find(search ? searchPostQuery : {})
       .populate({
         path: "userId",
-        select: "firstName lastName location profileUrl -password",
+        select: "firstName lastName location profileImage -password",
       })
       .sort({ _id: -1 });
 
@@ -87,13 +87,13 @@ const getPost = async (req, res) => {
     const post = await Post.findById(id)
       .populate({
         path: "userId",
-        select: "firstName lastName location profileUrl -password",
+        select: "firstName lastName location profileImage -password",
       })
       .populate({
         path: "comments",
         populate: {
           path: "userId",
-          select: "firstName lastName location profileUrl -password",
+          select: "firstName lastName location profileImage -password",
         },
         options: {
           sort: "-_id",
@@ -103,7 +103,7 @@ const getPost = async (req, res) => {
         path: "comments",
         populate: {
           path: "replies.userId",
-          select: "firstName lastName location profileUrl -password",
+          select: "firstName lastName location profileImage -password",
         },
       });
 
@@ -124,7 +124,7 @@ const getUserPosts = async (req, res) => {
     const post = await Post.find({ userId: id })
       .populate({
         path: "userId",
-        select: "firstName lastName location profileUrl -password",
+        select: "firstName lastName location profileImage -password",
       })
       .sort({ _id: -1 });
 
@@ -218,11 +218,11 @@ const getComments = async (req, res) => {
     const postComments = await Comment.find({ postId })
       .populate({
         path: "userId",
-        select: "firstName lastName location profileUrl -password",
+        select: "firstName lastName location profileImage -password",
       })
       .populate({
         path: "replies.userId",
-        select: "firstName lastName location profileUrl -password",
+        select: "firstName lastName location profileImage -password",
       })
       .sort({ _id: -1 });
 

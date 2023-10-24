@@ -51,7 +51,7 @@ const login = async (req, res, next) => {
       .select("+password")
       .populate({
         path: "friends",
-        select: "firstName lastName location profileUrl -password",
+        select: "firstName lastName location profileImage -password",
       });
     if (!foundUser) {
       return res.status(404).json({ message: "Invalid Email." });

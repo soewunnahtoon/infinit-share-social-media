@@ -30,7 +30,7 @@ const Comments = ({
       <Link to={`/profile/${comment?.userId?._id}`}>
         <img
           src={
-            comment?.userId?.profileUrl ??
+            comment?.userId?.profileImage ??
             "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png"
           }
           alt={`${comment?.userId?.firstName} ${comment?.userId?.lastName}`}

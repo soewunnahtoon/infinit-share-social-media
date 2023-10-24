@@ -55,7 +55,7 @@ const EditProfile = () => {
           lastName,
           profession,
           location,
-          profileUrl: profilePicture ? profilePicture : user?.profileUrl,
+          profileImage: profilePicture ? profilePicture : user?.profileImage,
         },
       });
 

@@ -37,8 +37,9 @@ const getUser = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     //Get the Datas from the Request Body
-    const { firstName, lastName, profession, location, profileUrl } = req.body;
-    if (!firstName || !lastName || !profession || !location || !profileUrl) {
+    const { firstName, lastName, profession, location, profileImage } =
+      req.body;
+    if (!firstName || !lastName || !profession || !location || !profileImage) {
       return res
         .status(404)
         .json({ message: "Please provide all required fields." });
@@ -51,7 +52,7 @@ const updateUser = async (req, res) => {
       lastName,
       profession,
       location,
-      profileUrl,
+      profileImage,
     };
     const foundUser = await User.findByIdAndUpdate(userId, updateUser, {
       new: true,
@@ -129,7 +130,7 @@ const getFriendRequest = async (req, res) => {
     })
       .populate({
         path: "requestFrom",
-        select: "firstName lastName profileUrl location profession -password",
+        select: "firstName lastName profileImage location profession -password",
       })
       .limit(10)
       .sort({
@@ -225,7 +226,7 @@ const suggestedFriends = async (req, res) => {
 
     const suggestedFriends = await User.find(queryObject)
       .limit(10)
-      .select("firstName lastName profileUrl profession -password");
+      .select("firstName lastName profileImage profession -password");
 
     return res.status(200).json({
       success: true,
