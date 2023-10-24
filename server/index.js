@@ -3,8 +3,6 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import bodyParser from "body-parser";
-import morgan from "morgan";
-import helmet from "helmet";
 import path from "path";
 //Import Custom Modules
 import { connectDB } from "./config/connectDB.js";
@@ -22,8 +20,6 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(morgan("dev"));
-app.use(helmet());
 //Routes
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
