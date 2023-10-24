@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import bodyParser from "body-parser";
-import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
 import path from "path";
@@ -23,7 +22,6 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
 app.use(morgan("dev"));
 app.use(helmet());
 //Routes
